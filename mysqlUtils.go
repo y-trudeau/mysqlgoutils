@@ -3,6 +3,7 @@
 package mysqlgoutils
 
 import (
+    "github.com/skeema/tengo"
 	"errors"
 	"fmt"
 	"regexp"
