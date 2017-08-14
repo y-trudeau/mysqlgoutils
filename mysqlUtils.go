@@ -5,9 +5,6 @@ package mysqlgoutils
 import (
     "github.com/skeema/tengo"
 	"errors"
-	"fmt"
-	"regexp"
-	"strconv"
 	"strings"
 )
 
@@ -38,5 +35,5 @@ func SplitHostOptionalPortAndSchema(hostaddr string) (string, int, string, error
 		return "", 0, "", err
 	}
 
-	return host, port, schema, nil
+	return host, port, schema, err
 }
