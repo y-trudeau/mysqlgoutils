@@ -19,7 +19,7 @@ import (
 // output.
 func SplitHostOptionalPortAndSchema(hostaddr string) (string, int, string, error) {
 	if len(hostaddr) == 0 {
-		return "", 0, errors.New("Cannot parse blank host address")
+		return "", 0, "", errors.New("Cannot parse blank host address")
 	}
 
 	// ipv6 without port, or ipv4 or hostname without port
