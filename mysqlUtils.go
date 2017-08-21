@@ -22,9 +22,13 @@ func SplitHostOptionalPortAndSchema(hostaddr string) (string, int, string, error
 		return "", 0, "", errors.New("Cannot parse blank host address")
 	}
 
-	// ipv6 without port, or ipv4 or hostname without port
-	if (hostaddr[0] == '[' && hostaddr[len(hostaddr)-1] == ']') || len(strings.Split(hostaddr, "|")) == 1 {
-		return hostaddr, 0, "", nil
+	// ipv6 without schema or ipv4 or hostname without schema
+	if (len(strings.Split(hostaddr, "|")) == 1 ) {
+        host, port, err := tengo.SplitHostOptionalPort(hostaddr)
+        if err != nil {
+            return "", 0, "", err
+        }
+		return host, port, "", nil
 	}
 
 	var schema string
@@ -35,5 +39,5 @@ func SplitHostOptionalPortAndSchema(hostaddr string) (string, int, string, error
 		return "", 0, "", err
 	}
 
-	return host, port, schema, err
+	return host, port, schema, nil 
 }
