@@ -39,12 +39,12 @@ func TestSplitHostOptionalPortAndSchema(t *testing.T) {
         assertSplit("[fe80::bd0f:a8bc:6480:238b%11]:sup", "", 0, "", true)
         assertSplit("[fe80::bd0f:a8bc:6480:238b%11]:123:456", "", 0, "", true)
 
-	    assertSplit("|dbtest", "", 0, "dbtest", true)
-        assertSplit("1.2.3.4|", "1.2.3.4", 0, "", true)
+	    assertSplit("|dbtest", "", 0, "", true)
+        assertSplit("1.2.3.4|", "", 0, "", true)
         assertSplit("1.2.3.4|dbtest", "1.2.3.4", 0, "dbtest", false)
         assertSplit("1.2.3.4:1234|dbtest", "1.2.3.4", 1234, "dbtest", false)
         assertSplit("1.2.3.4:1234|dbtest|foo", "1.2.3.4", 1234, "dbtest", true)
-        assertSplit("some.host", "some.host", 0, "", true)
+        assertSplit("some.host", "some.host", 0, "", false)
         assertSplit("some.host|dbtest", "some.host", 0, "dbtest", false)
         assertSplit("some.host:1234|dbtest", "some.host", 1234, "dbtest", false)
 

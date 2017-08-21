@@ -31,8 +31,15 @@ func SplitHostOptionalPortAndSchema(hostaddr string) (string, int, string, error
 		return host, port, "", nil
 	}
 
+    if strings.Count(hostaddr,"|") > 1 {
+        return "", 0, ,"", errors.New("Too many schema separators")
+    }
+
 	var schema string
 	schema = strings.Split(hostaddr, "|")[1]
+    if len(schema) == 0 {
+        return "", 0, ,"", errors.New("cannot parse schema")
+    }
 
 	host, port, err := tengo.SplitHostOptionalPort(strings.Split(hostaddr, "|")[0])
 	if err != nil {
