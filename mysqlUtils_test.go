@@ -5,7 +5,7 @@ import (
         "github.com/skeema/tengo"
 )
 
-func TestSplitHostOptionalPort(t *testing.T) {
+func TestSplitHostOptionalPortAndSchema(t *testing.T) {
         assertSplit := func(addr, expectHost string, expectPort int, expectSchema string, expectErr bool) {
                 host, port, schema, err := SplitHostOptionalPortAndSchema(addr)
                 if host != expectHost {
