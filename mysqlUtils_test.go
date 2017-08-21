@@ -2,7 +2,6 @@ package mysqlgoutils
 
 import (
         "testing"
-        "github.com/skeema/tengo"
 )
 
 func TestSplitHostOptionalPortAndSchema(t *testing.T) {
