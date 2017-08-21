@@ -32,7 +32,7 @@ func SplitHostOptionalPortAndSchema(hostaddr string) (string, int, string, error
 	}
 
     if strings.Count(hostaddr,"|") > 1 {
-        return "", 0, ,"", errors.New("Too many schema separators")
+        return "", 0, "", errors.New("Too many schema separators")
     }
 
 	var schema string
